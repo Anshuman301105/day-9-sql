@@ -1,0 +1,396 @@
+
+
+-- =====================================================
+-- DAY 9 - SQL
+-- Employee Database - 30 Business Queries
+-- =====================================================
+
+
+-- =====================================================
+-- QUERY 1
+-- List all employees
+-- =====================================================
+
+SELECT *
+FROM employee;
+
+
+-- =====================================================
+-- QUERY 2
+-- Display employee names and email addresses
+-- =====================================================
+
+SELECT employee_name, email
+FROM employee;
+
+
+-- =====================================================
+-- QUERY 3
+-- Find employees from Engineering department
+-- =====================================================
+
+SELECT e.employee_name
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+WHERE d.department_name = 'Engineering';
+
+-- QUERY 4
+-- Find employees from HR department
+-- ===============
+
+SELECT e.employee_name
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+WHERE d.department_name = 'Human Resources';
+
+
+-- =====================================================
+-- QUERY 5
+-- Find employees reporting to Amit Sharma
+-- =====================================================
+
+SELECT e.employee_name
+FROM employee e
+JOIN manager m
+    ON e.manager_id = m.manager_id
+WHERE m.manager_name = 'Amit Sharma';
+
+
+-- =====================================================
+-- QUERY 6
+-- Find employees reporting to Priya Singh
+-- =====================================================
+
+SELECT e.employee_name
+FROM employee e
+JOIN manager m
+    ON e.manager_id = m.manager_id
+WHERE m.manager_name = 'Priya Singh';
+
+
+-- =====================================================
+-- QUERY 7
+-- Find employees who joined after January 1, 2024
+-- =====================================================
+
+SELECT employee_name, joining_date
+FROM employee
+WHERE joining_date > '2024-01-01';
+
+
+-- =====================================================
+-- QUERY 8
+-- Find employees with salary greater than 60000
+-- =====================================================
+
+SELECT employee_name, salary
+FROM employee
+WHERE salary > 60000;
+
+
+-- =====================================================
+-- QUERY 9
+-- Find employees with salary between 40000 and 60000
+-- =====================================================
+
+SELECT employee_name, salary
+FROM employee
+WHERE salary BETWEEN 40000 AND 60000;
+
+
+-- =====================================================
+-- QUERY 10
+-- Find the highest-paid employee
+-- =====================================================
+
+SELECT employee_name, salary
+FROM employee
+WHERE salary = (
+    SELECT MAX(salary)
+    FROM employee
+);
+
+
+-- =====================================================
+-- QUERY 11
+-- Find the lowest-paid employee
+-- =====================================================
+
+SELECT employee_name, salary
+FROM employee
+WHERE salary = (
+    SELECT MIN(salary)
+    FROM employee
+);
+
+
+-- =====================================================
+-- QUERY 12
+-- Display employees ordered by salary
+-- =====================================================
+
+SELECT employee_name, salary
+FROM employee
+ORDER BY salary DESC;
+
+
+-- =====================================================
+-- QUERY 13
+-- Display employees ordered by joining date
+-- =====================================================
+
+SELECT employee_name, joining_date
+FROM employee
+ORDER BY joining_date ASC;
+
+
+-- =====================================================
+-- QUERY 14
+-- Count total number of employees
+-- =====================================================
+
+SELECT COUNT(*) AS total_employees
+FROM employee;
+
+
+-- =====================================================
+-- QUERY 15
+-- Count employees by department
+-- =====================================================
+
+SELECT d.department_name,
+       COUNT(e.employee_id) AS total_employees
+FROM department d
+LEFT JOIN employee e
+    ON d.department_id = e.department_id
+GROUP BY d.department_name
+ORDER BY total_employees DESC;
+
+
+-- =====================================================
+-- QUERY 16
+-- Find departments having more than 5 employees
+-- =====================================================
+
+SELECT d.department_name,
+       COUNT(e.employee_id) AS total_employees
+FROM department d
+JOIN employee e
+    ON d.department_id = e.department_id
+GROUP BY d.department_name
+HAVING COUNT(e.employee_id) > 5;
+
+
+-- =====================================================
+-- QUERY 17
+-- Find average salary of all employees
+-- =====================================================
+
+SELECT AVG(salary) AS average_salary
+FROM employee;
+
+
+-- =====================================================
+-- QUERY 18
+-- Find average salary by department
+-- =====================================================
+
+SELECT d.department_name,
+       AVG(e.salary) AS average_salary
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+GROUP BY d.department_name;
+
+
+-- =====================================================
+-- QUERY 19
+-- Find total salary paid by each department
+-- =====================================================
+
+SELECT d.department_name,
+       SUM(e.salary) AS total_salary
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+GROUP BY d.department_name
+ORDER BY total_salary DESC;
+
+
+-- =====================================================
+-- QUERY 20
+-- Find highest salary in each department
+-- =====================================================
+
+SELECT d.department_name,
+       MAX(e.salary) AS highest_salary
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+GROUP BY d.department_name;
+
+
+-- =====================================================
+-- QUERY 21
+-- Find lowest salary in each department
+-- =====================================================
+
+SELECT d.department_name,
+       MIN(e.salary) AS lowest_salary
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+GROUP BY d.department_name;
+
+
+-- =====================================================
+-- QUERY 22
+-- Join Employee + Department
+-- =====================================================
+
+SELECT
+    e.employee_name,
+    d.department_name
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id;
+
+
+-- =====================================================
+-- QUERY 23
+-- Join Employee + Department + Designation
+-- =====================================================
+
+SELECT
+    e.employee_name,
+    d.department_name,
+    des.designation_name
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+JOIN designation des
+    ON e.designation_id = des.designation_id;
+
+
+-- =====================================================
+-- QUERY 24
+-- Join Employee + Department + Designation + Manager
+-- =====================================================
+
+SELECT
+    e.employee_name,
+    d.department_name,
+    des.designation_name,
+    m.manager_name
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+JOIN designation des
+    ON e.designation_id = des.designation_id
+JOIN manager m
+    ON e.manager_id = m.manager_id;
+
+
+-- =====================================================
+-- QUERY 25
+-- Find employees with their manager names
+-- =====================================================
+
+SELECT
+    e.employee_name,
+    m.manager_name
+FROM employee e
+JOIN manager m
+    ON e.manager_id = m.manager_id;
+
+
+-- =====================================================
+-- QUERY 26
+-- Find the top 5 highest-paid employees
+-- =====================================================
+
+SELECT employee_name, salary
+FROM employee
+ORDER BY salary DESC
+LIMIT 5;
+
+
+-- =====================================================
+-- QUERY 27
+-- Find employees who joined in 2025
+-- =====================================================
+
+SELECT employee_name, joining_date
+FROM employee
+WHERE joining_date >= '2025-01-01'
+  AND joining_date < '2026-01-01';
+
+
+-- =====================================================
+-- QUERY 28
+-- Find departments whose average salary is greater
+-- than 55000
+-- =====================================================
+
+SELECT
+    d.department_name,
+    AVG(e.salary) AS average_salary
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+GROUP BY d.department_name
+HAVING AVG(e.salary) > 55000;
+
+
+-- =====================================================
+-- QUERY 29
+-- Find employees earning more than the
+-- company average salary
+-- =====================================================
+
+SELECT
+    employee_name,
+    salary
+FROM employee
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employee
+)
+ORDER BY salary DESC;
+
+
+-- =====================================================
+-- QUERY 30
+-- Business report:
+-- Employee + Department + Designation + Manager
+-- with salary and joining date
+-- =====================================================
+
+SELECT
+    e.employee_id,
+    e.employee_name,
+    d.department_name,
+    des.designation_name,
+    m.manager_name,
+    e.salary,
+    e.joining_date
+FROM employee e
+JOIN department d
+    ON e.department_id = d.department_id
+JOIN designation des
+    ON e.designation_id = des.designation_id
+JOIN manager m
+    ON e.manager_id = m.manager_id
+ORDER BY d.department_name, e.salary DESC;
+
+
+
+
+SELECT department_id, AVG(salary)
+FROM employee
+GROUP BY department_id;
+
+SELECT department_id, departmen
+FROM employee

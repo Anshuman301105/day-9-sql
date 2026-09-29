@@ -1,0 +1,141 @@
+-- ==========================================
+-- Insert Departments
+-- ==========================================
+
+INSERT INTO department (department_name)
+VALUES
+('Engineering'),
+('Human Resources'),
+('Finance'),
+('Sales'),
+('Marketing');
+
+
+-- ==========================================
+-- Insert Designations
+-- ==========================================
+
+INSERT INTO designation (designation_name)
+VALUES
+('Software Engineer'),
+('Senior Software Engineer'),
+('Team Lead'),
+('HR Executive'),
+('HR Manager'),
+('Accountant'),
+('Finance Manager'),
+('Sales Executive'),
+('Sales Manager'),
+('Marketing Executive');
+
+
+-- ==========================================
+-- Insert Managers
+-- ==========================================
+
+INSERT INTO manager (manager_name, email)
+VALUES
+('Amit Sharma', 'amit@company.com'),
+('Priya Singh', 'priya@company.com'),
+('Rahul Verma', 'rahul@company.com'),
+('Neha Gupta', 'neha@company.com');
+
+
+-- ==========================================
+-- Insert Employees
+-- ==========================================
+
+INSERT INTO employee
+(employee_name, email, phone, salary, joining_date,
+ department_id, designation_id, manager_id)
+VALUES
+
+('Anshuman Maurya', 'anshuman@company.com', '9876543210',
+ 45000, '2025-01-10', 1, 1, 1),
+
+('Rohit Kumar', 'rohit@company.com', '9876543211',
+ 55000, '2024-06-15', 1, 2, 1),
+
+('Sneha Patel', 'sneha@company.com', '9876543212',
+ 65000, '2023-03-20', 1, 3, 1),
+
+('Vikas Singh', 'vikas@company.com', '9876543213',
+ 48000, '2025-02-01', 1, 1, 1),
+
+('Pooja Sharma', 'pooja@company.com', '9876543214',
+ 52000, '2024-08-12', 1, 2, 1),
+
+('Arjun Mehta', 'arjun@company.com', '9876543215',
+ 70000, '2022-11-05', 1, 3, 1),
+
+('Karan Gupta', 'karan@company.com', '9876543216',
+ 43000, '2025-04-18', 1, 1, 2),
+
+('Neha Verma', 'neha.v@company.com', '9876543217',
+ 60000, '2023-09-10', 1, 2, 2),
+
+('Aisha Khan', 'aisha@company.com', '9876543218',
+ 42000, '2025-05-22', 1, 1, 2),
+
+('Manish Yadav', 'manish@company.com', '9876543219',
+ 75000, '2021-07-14', 1, 3, 2),
+
+('Riya Kapoor', 'riya@company.com', '9876543220',
+ 40000, '2025-03-01', 2, 4, 2),
+
+('Nitin Joshi', 'nitin@company.com', '9876543221',
+ 68000, '2022-02-10', 2, 5, 2),
+
+('Kavita Rao', 'kavita@company.com', '9876543222',
+ 62000, '2023-05-16', 2, 5, 2),
+
+('Suresh Jain', 'suresh@company.com', '9876543223',
+ 45000, '2024-01-20', 3, 6, 3),
+
+('Deepak Shah', 'deepak@company.com', '9876543224',
+ 80000, '2021-09-25', 3, 7, 3),
+
+('Meena Das', 'meena@company.com', '9876543225',
+ 47000, '2024-07-11', 3, 6, 3),
+
+('Raj Malhotra', 'raj@company.com', '9876543226',
+ 50000, '2025-01-15', 4, 8, 3),
+
+('Simran Kaur', 'simran@company.com', '9876543227',
+ 58000, '2024-03-18', 4, 8, 3),
+
+('Akash Gupta', 'akash@company.com', '9876543228',
+ 72000, '2022-06-21', 4, 9, 3),
+
+('Pankaj Verma', 'pankaj@company.com', '9876543229',
+ 46000, '2025-02-14', 4, 8, 3),
+
+('Ishita Roy', 'ishita@company.com', '9876543230',
+ 44000, '2025-04-05', 5, 10, 4),
+
+('Varun Mehta', 'varun@company.com', '9876543231',
+ 49000, '2024-05-12', 5, 10, 4),
+
+('Tanya Singh', 'tanya@company.com', '9876543232',
+ 65000, '2023-01-25', 5, 10, 4),
+
+('Mohit Kumar', 'mohit@company.com', '9876543233',
+ 53000, '2024-10-10', 5, 10, 4),
+
+('Priyanka Jain', 'priyanka@company.com', '9876543234',
+ 57000, '2023-11-15', 5, 10, 4),
+
+('Rakesh Kumar', 'rakesh@company.com', '9876543235',
+ 39000, '2025-06-01', 2, 4, 2),
+
+('Shweta Gupta', 'shweta@company.com', '9876543236',
+ 61000, '2023-08-17', 2, 5, 2),
+
+('Aman Singh', 'aman@company.com', '9876543237',
+ 41000, '2025-05-01', 3, 6, 3),
+
+('Nisha Patel', 'nisha@company.com', '9876543238',
+ 59000, '2024-02-22', 4, 8, 3),
+
+('Yash Sharma', 'yash@company.com', '9876543239',
+ 67000, '2022-12-01', 1, 2, 1);
